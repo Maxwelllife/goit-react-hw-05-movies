@@ -1,9 +1,10 @@
 import { Searchbar } from 'components';
+import s from './MoviesPage.module.css';
 
 function MoviesPage() {
   return (
     <main>
-      <h2>тут может быть ваша реклама</h2>
+      <h2 className={s.title}>Search movie</h2>
       <Searchbar />
     </main>
   );

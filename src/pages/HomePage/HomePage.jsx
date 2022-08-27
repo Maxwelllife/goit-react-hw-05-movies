@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { getTrendingMovies } from '../../services/movieApi';
 import { MoviesList, Spinner } from 'components';
 
-// import s from './HomePage.module.css';
+import s from './HomePage.module.css';
 
 function HomePage() {
   const [isLoading, setIsLoading] = useState(false);
@@ -26,10 +26,11 @@ function HomePage() {
   }, []);
 
   return (
-    <>
+    <main>
       {isLoading && <Spinner />}
+      <h2 className={s.title}>Popular movies today</h2>
       <MoviesList movies={movies} />
-    </>
+    </main>
   );
 }
 

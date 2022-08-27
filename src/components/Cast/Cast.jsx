@@ -14,7 +14,7 @@ function Cast() {
       setIsLoading(true);
       try {
         const data = await getActors(movieId);
-        console.log('ActorsArray: ', data.cast);
+        // console.log('ActorsArray: ', data.cast);
         setActors(data.cast);
       } catch (error) {
         console.log(error.message);
@@ -32,8 +32,8 @@ function Cast() {
       : (profile_path =
           'https://upload.wikimedia.org/wikipedia/commons/4/47/GarvaGriha_in_KaryaBinayak.jpg');
     return (
-      <li key={id}>
-        <img src={profile_path} alt={name} /> <p>{name}</p>
+      <li className={s.item} key={id}>
+        <img className={s.img} src={profile_path} alt={name} /> <p>{name}</p>
       </li>
     );
   });

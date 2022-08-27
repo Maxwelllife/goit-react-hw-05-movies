@@ -12,7 +12,7 @@ function OneMovieDetails({
   const releaseYear = new Date(release_date).getFullYear();
 
   const genresList = genres?.map(genre => genre.name).join(', ');
-  console.log('genresList: ', genresList);
+  // console.log('genresList: ', genresList);
 
   poster_path
     ? (poster_path = `https://image.tmdb.org/t/p/w500/${poster_path}`)

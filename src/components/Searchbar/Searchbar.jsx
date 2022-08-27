@@ -20,7 +20,7 @@ const Searchbar = () => {
       try {
         const data = await searchMovies(query);
         setMovies(data);
-        console.log('data: ', data);
+        // console.log('data: ', data);
       } catch (error) {
         console.log(error.message);
       } finally {
@@ -40,7 +40,7 @@ const Searchbar = () => {
     e.preventDefault();
     const nextParams =
       inputRef.current.value !== '' ? { query: inputRef.current.value } : {};
-    console.log('inputRef.current.value', inputRef.current.value);
+    // console.log('inputRef.current.value', inputRef.current.value);
     setSearchParams(nextParams);
   };
 

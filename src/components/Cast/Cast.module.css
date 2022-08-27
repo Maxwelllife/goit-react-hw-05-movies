@@ -1,0 +1,17 @@
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+}
+.img {
+  transition: 0.3s;
+  width: 150px;
+}
+.item {
+  display: grid;
+  grid-template-columns: 1fr;
+  /* grid-column-gap: 15px;
+  grid-row-gap: 15px; */
+  margin-right: 15px;
+  padding-bottom: 24px;
+}

@@ -1,18 +1,24 @@
 import { NavLink } from 'react-router-dom';
+import { menuItems } from './MenuItems';
 import s from './Header.module.css';
 
+const getLinkClassName = props => {
+  const { isActive } = props;
+  return isActive ? s.activeLink : s.link;
+};
+
 function Header() {
+  const elements = menuItems.map(({ id, to, text }) => (
+    <li className={s.menu__item} key={id}>
+      <NavLink to={to} className={getLinkClassName}>
+        {text}
+      </NavLink>
+    </li>
+  ));
   return (
     <div>
       <header className={s.app}>
-        <nav className={s.navList}>
-          <NavLink className={s.link} to="/">
-            HOME
-          </NavLink>
-          <NavLink className={s.link} to="/movies">
-            MOVIES
-          </NavLink>
-        </nav>
+        <nav className={s.navList}>{elements}</nav>
       </header>
     </div>
   );

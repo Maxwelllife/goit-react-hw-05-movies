@@ -4,7 +4,7 @@ import s from './Spinner.module.css';
 
 function Spinner() {
   return (
-    <div className={s.Spinner}>
+    <div className={s.spinner}>
       <ThreeDots
         height="80"
         width="80"

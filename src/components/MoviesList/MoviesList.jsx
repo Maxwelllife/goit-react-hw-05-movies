@@ -1,14 +1,36 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+import s from './MoviesList.module.css';
 
 function MoviesList({ movies }) {
-  const elements = movies.map(({ id, title }) => {
+  const location = useLocation();
+
+  const elements = movies.map(({ id, title, poster_path }) => {
+    poster_path
+      ? (poster_path = `https://image.tmdb.org/t/p/w500/${poster_path}`)
+      : (poster_path =
+          'https://upload.wikimedia.org/wikipedia/commons/4/47/GarvaGriha_in_KaryaBinayak.jpg');
+
+    const finalTitle = function () {
+      if (title.length <= 40) {
+        return title;
+      } else {
+        return title.slice(0, 38) + '...';
+      }
+    };
     return (
-      <li key={id}>
-        <Link to={`/movies/${id}/`}>{title}</Link>
+      <li className={s.item} key={id}>
+        <Link
+          to={`/movies/${id}`}
+          state={{ from: location }}
+          className={s.link}
+        >
+          <img src={poster_path} alt={title} className={s.img} width="200" />
+          <p className={s.title}>{finalTitle()}</p>
+        </Link>
       </li>
     );
   });
-  return <ul>{elements}</ul>;
+  return <ul className={s.list}>{elements}</ul>;
 }
 
 export default MoviesList;

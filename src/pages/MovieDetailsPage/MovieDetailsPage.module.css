@@ -4,6 +4,7 @@
   padding: 10px 20px;
   border-radius: 5px;
   box-shadow: 0px 5px 11px 2px #b13606;
+  transition: 0.3s;
 }
 .link:hover {
   scale: 1.1;
