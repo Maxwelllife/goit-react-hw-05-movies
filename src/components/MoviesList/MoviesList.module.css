@@ -15,9 +15,9 @@
   border: 1px solid rgba(0, 0, 0, 0.1);
   cursor: pointer;
   transition: translate 0.3s;
-  min-width: 200px;
+  /* min-width: 200px; */
 
-  width: calc((100% - 60px) / 5);
+  /* width: calc((100% - 60px) / 5); */
 }
 .title {
   height: 13%;

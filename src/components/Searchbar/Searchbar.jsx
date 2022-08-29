@@ -1,10 +1,10 @@
 import s from './Searchbar.module.css';
 import { BsSearch } from 'react-icons/bs';
-// import PropTypes from 'prop-types';
 import { useSearchParams } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
 import { searchMovies } from '../../services/movieApi';
 import { MoviesList, Spinner } from 'components';
+import { toast } from 'react-toastify';
 
 const Searchbar = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -19,8 +19,12 @@ const Searchbar = () => {
       setIsLoading(true);
       try {
         const data = await searchMovies(query);
+        if (data.length === 0) {
+          toast.error(`Oops, i dont have this movie, sorry`, {
+            theme: 'colored',
+          });
+        }
         setMovies(data);
-        // console.log('data: ', data);
       } catch (error) {
         console.log(error.message);
       } finally {
@@ -38,10 +42,16 @@ const Searchbar = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
+
     const nextParams =
-      inputRef.current.value !== '' ? { query: inputRef.current.value } : {};
+      inputRef.current.value !== '' ? { query: inputRef.current.value } : '';
     // console.log('inputRef.current.value', inputRef.current.value);
     setSearchParams(nextParams);
+    console.log('nextParams: ', nextParams);
+
+    if (!nextParams) {
+      toast.error(`Search field is empty`, { theme: 'colored' });
+    }
   };
 
   return (
@@ -65,13 +75,9 @@ const Searchbar = () => {
         </form>
       </header>
       {isLoading && <Spinner />}
-      <MoviesList movies={movies} />
+      {movies.length > 0 && <MoviesList movies={movies} />}
     </>
   );
 };
-
-// Searchbar.propTypes = {
-//   catchSubmitInfo: PropTypes.func.isRequired,
-// };
 
 export default Searchbar;

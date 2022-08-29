@@ -1,4 +1,6 @@
 import s from './OneMovieDetails.module.css';
+import PropTypes from 'prop-types';
+
 function OneMovieDetails({
   id,
   title,
@@ -45,5 +47,15 @@ function OneMovieDetails({
     </div>
   );
 }
+
+OneMovieDetails.propTypes = {
+  id: PropTypes.number.isRequired,
+  title: PropTypes.string.isRequired,
+  poster_path: PropTypes.string,
+  release_date: PropTypes.string,
+  vote_average: PropTypes.number,
+  overview: PropTypes.string,
+  genres: PropTypes.arrayOf(PropTypes.object.isRequired),
+};
 
 export default OneMovieDetails;
